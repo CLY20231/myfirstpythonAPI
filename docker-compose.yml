@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  youtube-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: youtube-api
+    container_name: youtube-api
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/api

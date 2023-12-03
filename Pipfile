@@ -1,0 +1,31 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+flake8 = "*"
+pydocstyle = "*"
+flake8-isort = "*"
+isort = "*"
+autopep8 = "*"
+google-api-python-client = "*"
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+requests = "*"
+pytest = "*"
+pytest-mock = "*"
+pydantic = "*"
+psycopg2-binary = "*"
+
+[requires]
+python_version = "3.9"
+
+[scripts]
+main = "uvicorn main:api --host 0.0.0.0 --reload"
+lint = "flake8 /api --ignore E501,F811"
+lint-fix = "bash -c 'isort /api && flake8 /api  --ignore E501| cut -d: -f1 | sort | uniq | xargs autopep8 -i --ignore F811'"
+test = "pytest"
+call_youtube_api = "python api/call_youtube_api.py"
